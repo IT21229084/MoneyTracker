@@ -4,8 +4,20 @@ function MainUi() {
     const[Name, SetName] = useState("")
     const[DateTime, SetDateTime] = useState("")
     const[Description, SetDescription] = useState("")
-    function addNewTranscations (){
+    function addNewTranscations (e){
+        e.preventDefault();
+        // const url = process.env.REACT_APP_URL +'/transcation';
+        const url = 'http://localhost:8000/api/transcation';
+        fetch(url,{
+            method:'post',
+            headers:{'Content-type':'application/json'},
+            body:JSON.stringify({Name,DateTime,Description})
 
+        }).then(res =>{
+            res.json().then(json=>{
+                console.log('result',json)
+            })
+        })
     }
     return (
         <main>
@@ -24,7 +36,7 @@ function MainUi() {
                         onChange={e => SetDescription(e.target.value)}
                         type="text" placeholder="description" />
                 </div>
-                <button >Add New Transcations</button>
+                <button type='submit'>Add New Transcations</button>
             </form>
             <div className="transcations">
                 <div className="transcation">
