@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const TranscationShema = new Schema({
     Name: { type: String, required: true },
     DateTime: { type: Date, required: true },
-    Description: { type: String, required: true }
+    Description: { type: String }
 
 })
 
