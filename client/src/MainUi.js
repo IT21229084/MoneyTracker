@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 function MainUi() {
     const [Name, SetName] = useState("")
     const [DateTime, SetDateTime] = useState("")
-    const [description, SetDescription] = useState("")
+    const [Description, SetDescription] = useState("")
     function addNewTranscations(e) {
         e.preventDefault();
         // const url = process.env.REACT_APP_URL +'/transcation';
@@ -11,7 +11,7 @@ function MainUi() {
         fetch(url, {
             method: 'post',
             headers: { 'Content-type': 'application/json' },
-            body: JSON.stringify({ Name, DateTime, description })
+            body: JSON.stringify({ Name,Description, DateTime,  })
 
         }).then(res => {
             res.json().then(json => {
@@ -32,9 +32,9 @@ function MainUi() {
                         onChange={e => SetDateTime(e.target.value)} />
                 </div>
                 <div className="description">
-                    <input value={description}
+                    <input type="text" value={Description}
                         onChange={e => SetDescription(e.target.value)}
-                        type="text" placeholder="description" />
+                         placeholder="description" />
                 </div>
                 <button type='submit'>Add New Transcations</button>
             </form>
