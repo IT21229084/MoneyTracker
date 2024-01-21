@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
 
 function MainUi() {
-    const[Name, SetName] = useState("")
-    const[DateTime, SetDateTime] = useState("")
-    const[Description, SetDescription] = useState("")
-    function addNewTranscations (e){
+    const [Name, SetName] = useState("")
+    const [DateTime, SetDateTime] = useState("")
+    const [description, SetDescription] = useState("")
+    function addNewTranscations(e) {
         e.preventDefault();
         // const url = process.env.REACT_APP_URL +'/transcation';
         const url = 'http://localhost:8000/api/transcation';
-        fetch(url,{
-            method:'post',
-            headers:{'Content-type':'application/json'},
-            body:JSON.stringify({Name,DateTime,Description})
+        fetch(url, {
+            method: 'post',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({ Name, DateTime, description })
 
-        }).then(res =>{
-            res.json().then(json=>{
-                console.log('result',json)
+        }).then(res => {
+            res.json().then(json => {
+                console.log('result', json)
             })
         })
     }
@@ -32,7 +32,7 @@ function MainUi() {
                         onChange={e => SetDateTime(e.target.value)} />
                 </div>
                 <div className="description">
-                    <input value={Description}
+                    <input value={description}
                         onChange={e => SetDescription(e.target.value)}
                         type="text" placeholder="description" />
                 </div>
