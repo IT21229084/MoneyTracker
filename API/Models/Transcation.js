@@ -2,6 +2,7 @@ import { model, Schema } from "mongoose";
 import mongoose from 'mongoose';
 const TranscationShema = new Schema({
     Name: { type: String, required: true }, 
+    Price:{type:Number,required:true},
     Description: { type: String,required: true },
     DateTime: { type: Date, required: true },
    

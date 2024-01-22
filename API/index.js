@@ -18,9 +18,15 @@ app.post("/api/transcation", async (req, res) => {
     // await mongoose.connect("mongodb+srv://malithiroshan9:malith3541@moneytrackerdb.bhxehan.mongodb.net/?retryWrites=true&w=majority")
     console.log('Request Body:', req.body);
     await mongoose.connect(process.env.MONGO)
-    const { Name, Description ,DateTime  } = req.body
-    const transcation = await Transcation.create({ Name, Description ,DateTime  })
+    const { Name, Price, Description, DateTime } = req.body
+    const transcation = await Transcation.create({ Name, Price, Description, DateTime })
     res.json(transcation)
+})
+app.get("/api/transcations", async (req, res) => {
+
+    await mongoose.connect(process.env.MONGO)
+    const transcations = await Transcation.find()
+    res.json(transcations)
 })
 
 
